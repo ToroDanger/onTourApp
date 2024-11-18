@@ -90,11 +90,10 @@ body{
     background-color: #b9b9b9;
 }
 
-@media screen and (max-width:750px){
+@media screen and (max-width:991px){
     html{
         font-size: 12px;
     }
-    
 }
 
 @media screen and (max-width:580px){
