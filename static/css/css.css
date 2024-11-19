@@ -1,8 +1,15 @@
+html{
+    height: 100%;
+    margin: 0;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
     margin: 0;
     padding: 0;
+    height: 100%;
+    display: block;
 }
 
 .container-form{
@@ -61,4 +68,77 @@ body {
 
 .form label i{
     color: #252524;
+}
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 30px;
+}
+
+.navbar {
+    border-radius: 15px;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px;
+}
+
+.navbar-brand {
+
+    color: #007bff;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #00408d;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.footer .card-header a {
+    color: white; 
+    font-size: 20px; 
+}
+.footer .footer-left,
+.footer .footer-right {
+    flex: 1;
+    margin: 10px;
+}
+.footer .footer-left p,
+.footer .footer-right p {
+    margin: 0;
+}
+.footer .footer-left strong {
+    display: block;
+    margin-bottom: 10px;
+}
+.footer .social-icons {
+    display: flex;
+    align-items: center;
+}
+.footer .social-icons i {
+    font-size: 40px; 
+    margin-right: 20px; 
+    color: white; 
+}
+.footer .social-icons i:hover {
+    color: #007bff; 
 }
