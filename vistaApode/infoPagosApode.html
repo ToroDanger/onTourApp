@@ -34,7 +34,7 @@
 
     <!-- Contenido principal -->
     <div class="container">
-        <h1 class="display-4">{{ curso.nombre }}</h1>
+        <h1 class="display-4">curso.nombre</h1>
         <p class="lead">Listado de los pagos ya realizados para este curso.</p>
 
         <!-- Tabla de pagos realizados -->
@@ -51,12 +51,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for pago in pagos %}
                         <tr>
-                            <td>{{ pago.fecha_pago }}</td>
-                            <td>${{ pago.monto }}</td>
+                            <td>pago.fecha_pago</td>
+                            <td> pago.monto</td>
                         </tr>
-                        {% endfor %}
                     </tbody>
                 </table>
             </div>
