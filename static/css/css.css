@@ -16,6 +16,10 @@ body {
     z-index: -1;
 }
 
+.container{
+    margin-bottom: 3%;
+}
+
 .container-form{
     display: flex;
     border-radius: 20px;
@@ -24,7 +28,7 @@ body {
     text-align: center;
     width: 40%;
     margin-left: 30%;
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
 .form-information{
@@ -33,7 +37,7 @@ body {
     justify-content: center;
     width: 100%;
     text-align: center;
-    background-color: #dcdcdc;
+    background-color: #B7E0FF;
     border-radius: 20px;
 }
 
@@ -155,10 +159,8 @@ h1 {
 footer {
     background-color: #343a40;
     color: white;
-}
-
-.container {
-    margin-top: 30px;
+    margin-top: 20%s;
+    height: 140px;
 }
 
 

@@ -3,27 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/css/css.css">
     <title>OnTour</title>
 </head>
 <body>
-    <div class="container-form register">
-        <div class="form-information">
-            <div class="form-information-childs">
-                <img src="static/img/usuario.png" alt="" style="width: 100px;">
-                <h2>Iniciar Sesión</h2>
-                <form action="" method="POST" id="form">
-                    <div class="form">
-                        <input type="email" placeholder="Correo electronico" name="">
-                    </div>
-                    <div class="form">
-                        <input type="password" placeholder="Contraseña" name="">
-                        <label for=""></label>
-                    </div>
-                    <button type="submit" class="btn"><a href="home.html">Iniciar Sesión</a></button>
-                </form>
+    <header class="bg-primary text-white p-4">
+        <div class=" text-center">
+            <h1 class="font-weight-bold">Bienvenido a On Tour</h1>
+            <p>Explora nuestras ofertas de paquetes turísticos</p>
+        </div>
+    </header>
+    <div class="container"> 
+        <div class="container-form register">
+            <div class="form-information">
+                <div class="form-information-childs">
+                    <img src="static/img/usuario.png" alt="" style="width: 100px;">
+                    <h2>Iniciar Sesión</h2>
+                    <form action="" method="POST" id="form">
+                        <div class="form">
+                            <input type="email" placeholder="Correo electronico" name="">
+                        </div>
+                        <div class="form">
+                            <input type="password" placeholder="Contraseña" name="">
+                            <label for=""></label>
+                        </div>
+                        <button type="submit" class="btn"><a href="home.html">Iniciar Sesión</a></button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </body>
+    <footer class="bg-dark text-white text-center p-4 mt-4">
+        <p>&copy; 2024 On Tour - Todos los derechos reservados</p>
+    </footer>
 </html>
