@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos del Curso</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Estructura general */
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            flex: 1;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* Títulos */
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Cuadro con Plazo y Progreso */
+        .progress-bar-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            width: 70%;
+            height: 20px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            margin-left: 10px;
+        }
+
+        .progress-bar > div {
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .combo-box {
+            padding: 5px;
+            width: 100px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilo para las tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Disposición de las tablas lado a lado */
+        .tables-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .table-container {
+            width: 48%; /* Cada tabla ocupa el 48% del ancho */
+            margin-top: 20px;
+        }
+
+        .footer .icon-container {
+            display: flex;
+            gap: 20px;
+        }
+        .footer .icon-container a {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+        .footer .icon-container a:hover {
+            color: #007bff;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer a {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #007bff;
+        }
+        /* Estilo responsivo */
+        @media (max-width: 768px) {
+            table {
+                font-size: 12px;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tables-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .table-container {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+        <!-- Footer superior -->
+        <div class="footer">
+            <div class="icon-container">
+                <a href="#"><i class="fas fa-sign-out-alt"></i></a>
+                <a href="#"><i class="fas fa-home"></i></a>
+            </div>
+        </div>
+
+    <div class="container">
+        <!-- Titulo -->
+        <h1>Pagos del Curso</h1>
+        <h2 id="titulo-curso">Curso: <span id="nombre-curso"></span> - Colegio: <span id="nombre-colegio"></span></h2>
+
+        <!-- Cuadro con Plazo y Progreso -->
+        <div class="progress-bar-container">
+            <div>
+                <h4>Plazo para completar pago:</h4>
+                <p id="plazo-pago"></p>
+            </div>
+            <div class="progress-bar">
+                <div id="barra-progreso" style="width: 0%;"></div>
+            </div>
+            <div>
+                <h4>Progreso del curso:</h4>
+                <p id="progreso-curso">0%</p>
+            </div>
+        </div>
+
+        <!-- Contenedor de tablas lado a lado -->
+        <div class="tables-container">
+            <!-- Tabla de Pagos -->
+            <div class="table-container">
+                <h3>Pagos Realizados</h3>
+                <table id="tabla-pagos">
+                    <thead>
+                        <tr>
+                            <th>Rut Alumno</th>
+                            <th>Nro Pago</th>
+                            <th>Monto Pagado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se agregarán los pagos realizados -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tabla de Resumen de Pagos -->
+            <div class="table-container">
+                <h3>Resumen de Pagos</h3>
+                <table id="tabla-resumen">
+                    <tr>
+                        <td>Total Pagado</td>
+                        <td><p id="total-pagado">$0</p></td>
+                    </tr>
+                    <tr>
+                        <td>Saldo</td>
+                        <td><p id="saldo">$0</p></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Botón Volver -->
+        <div class="button-container">
+            <button onclick="volver()">Volver</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-left">
+            <p><strong>Contacto</strong></p>
+            <p>Teléfono: +56 9 1234 5678</p>
+            <p>Email: contacto@ontour.cl</p>
+            <p>Dirección: Huérfanos 11, Providencia</p>
+        </div>
+        <div class="footer-right">
+            <p>Redes Sociales</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <script>
+        // Función para obtener los detalles del curso y pagos desde el backend
+        async function cargarPagosCurso(cursoId) {
+            try {
+                const response = await fetch(`https://tudominio.com/api/cursos/${cursoId}/pagos`);
+                const data = await response.json();
+
+                // Actualizar título con nombre del curso y colegio
+                document.getElementById('nombre-curso').textContent = data.nombreCurso;
+                document.getElementById('nombre-colegio').textContent = data.nombreColegio;
+
+                // Actualizar plazo para completar pago
+                document.getElementById('plazo-pago').textContent = data.plazoPago;
+
+                // Actualizar barra de progreso
+                const progreso = data.progresoPago;
+                document.getElementById('barra-progreso').style.width = `${progreso}%`;
+                document.getElementById('progreso-curso').textContent = `${progreso}%`;
+
+                // Cargar pagos realizados
+                const tablaPagos = document.querySelector('#tabla-pagos tbody');
+                tablaPagos.innerHTML = ''; // Limpiar tabla
+
+                data.pagos.forEach(pago => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${pago.rutAlumno}</td>
+                        <td>
+                            <select class="combo-box">
+                                <option value="${pago.nroPago}">${pago.nroPago}</option>
+                            </select>
+                        </td>
+                        <td>$${pago.montoPagado}</td>
+                    `;
+                    tablaPagos.appendChild(row);
+                });
+
+                // Actualizar resumen de pagos
+                const totalPagado = data.totalPagado;
+                const saldo = data.saldo;
+                document.getElementById('total-pagado').textContent = `$${totalPagado}`;
+                document.getElementById('saldo').textContent = `$${saldo}`;
+
+            } catch (error) {
+                console.error("Error al cargar los pagos del curso", error);
+            }
+        }
+
+        // Función de volver
+        function volver() {
+            window.history.back();
+        }
+
+        // Cargar los datos cuando la página se carga
+        window.onload = function() {
+            const cursoId = 123; // ID del curso
+            cargarPagosCurso(cursoId);
+        };
+    </script>
+</body>
+</html>
