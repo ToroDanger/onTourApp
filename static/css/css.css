@@ -4,14 +4,17 @@ html{
 }
 
 body {
-    background-color: #f8f9fa; 
+    background-color: #faf9f8; 
     color: #343a40; 
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 
 }
-s
+.container{
+    text-align: center;
+    margin-top: 10px;
+}
 .container-form{
     display: flex;
     border-radius: 20px;
@@ -87,22 +90,26 @@ header {
 
     color: #007bff;
 }
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    border-radius: 30px;
-    padding: 10px 20px;
-    font-size: 16px;
+.btn-custom {
+    background-color: #5AB2FF; 
+    color: white;
+    border-radius: 20px; 
+    padding: 10px 20px; 
+    font-size: 14px;
     font-weight: bold;
+    border: none;
+    margin-bottom: 20px; 
+    width: 250px; 
 }
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #00408d;
+.btn-custom:hover {
+    background-color: #B7E0FF; 
+}
+.button-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
 }
 .footer {
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -112,7 +119,7 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 .footer .card-header a {
     color: white; 
