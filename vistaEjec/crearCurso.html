@@ -66,23 +66,22 @@
             border-radius: 5px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
-            color: #343a40;  /* Color de texto */
-            background-color: #fff;  /* Fondo blanco */
-            line-height: 1.5; /* Ajuste de la altura de línea */
-            height: auto;  /* Ajusta la altura del select */
+            color: #343a40; 
+            background-color: #fff;  
+            line-height: 1.5; 
+            height: auto;  
             display: inline-block;
-            text-overflow: ellipsis;  /* Evita el texto cortado */
         }
         
         .form-group select option {
-            color: #343a40;  /* Color de texto dentro de las opciones */
-            background-color: #fff;  /* Fondo blanco para las opciones */
-            padding: 10px;  /* Asegura que las opciones tengan espacio */
-            font-size: 14px; /* Tamaño de la fuente para las opciones */
+            color: #343a40; 
+            background-color: #fff;  
+            padding: 10px;  
+            font-size: 14px;
         }
         
         .form-group label {
-            margin-right: 15px; /* Espacio entre label y input */
+            margin-right: 15px; 
         }
         .form-group .invalid-feedback {
             display: none;
@@ -94,9 +93,9 @@
             display: block;
         }
         .footer .card-header {
-            display: flex; /* Los hijos estarán en fila */
-            justify-content: flex-end; /* Alinea los elementos a la derecha */
-            align-items: center; /* Centra verticalmente */
+            display: flex; 
+            justify-content: flex-end; 
+            align-items: center; 
             padding: 10px;
         }
 
@@ -138,11 +137,10 @@
     <!-- Footer superior -->
     <div class="footer">
         <div class="icon-container">
-            <a href="#"><i class="fas fa-sign-out-alt"></i></a>
-            <a href="#"><i class="fas fa-home"></i></a>
+            <a href="newCurso.html"><i class="fas fa-home"></i></a>
+            <a href="loginEje.html"><i class="fas fa-sign-out-alt"></i></a>
         </div>
     </div>
-    
 
 <div class="container">
     <div class="title-container">
@@ -197,7 +195,7 @@
                         </div>
 
                         <div class="button-container">
-                            <a href="{{ url_for('agregar_alumnos') }}" class="btn btn-custom">Agregar Alumnos</a>
+                            <a href="ingresoAlumnos.html" class="btn btn-custom">Agregar Alumnos</a>
                             <a href="{{ url_for('adjuntar_documento') }}" class="btn btn-custom">Adjuntar Documento</a>
                             <button type="submit" class="btn btn-custom">Guardar Curso</button>
                         </div>

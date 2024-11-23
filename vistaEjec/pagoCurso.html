@@ -30,7 +30,6 @@
             margin-bottom: 20px;
         }
 
-        /* Cuadro con Plazo y Progreso */
         .progress-bar-container {
             display: flex;
             justify-content: flex-end;
@@ -78,7 +77,6 @@
             background-color: #0056b3;
         }
 
-        /* Estilo para las tablas */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -104,7 +102,6 @@
             background-color: #e9ecef;
         }
 
-        /* Disposición de las tablas lado a lado */
         .tables-container {
             display: flex;
             justify-content: space-between;
@@ -112,7 +109,7 @@
         }
 
         .table-container {
-            width: 48%; /* Cada tabla ocupa el 48% del ancho */
+            width: 48%;
             margin-top: 20px;
         }
 
@@ -146,7 +143,6 @@
         .footer a:hover {
             color: #007bff;
         }
-        /* Estilo responsivo */
         @media (max-width: 768px) {
             table {
                 font-size: 12px;
@@ -173,17 +169,16 @@
         <!-- Footer superior -->
         <div class="footer">
             <div class="icon-container">
-                <a href="#"><i class="fas fa-sign-out-alt"></i></a>
-                <a href="#"><i class="fas fa-home"></i></a>
+                <a href="newCurso.html"><i class="fas fa-home"></i></a>
+                <a href="loginEje.html"><i class="fas fa-sign-out-alt"></i></a>
             </div>
         </div>
+    
 
     <div class="container">
-        <!-- Titulo -->
         <h1>Pagos del Curso</h1>
         <h2 id="titulo-curso">Curso: <span id="nombre-curso"></span> - Colegio: <span id="nombre-colegio"></span></h2>
 
-        <!-- Cuadro con Plazo y Progreso -->
         <div class="progress-bar-container">
             <div>
                 <h4>Plazo para completar pago:</h4>
@@ -198,7 +193,6 @@
             </div>
         </div>
 
-        <!-- Contenedor de tablas lado a lado -->
         <div class="tables-container">
             <!-- Tabla de Pagos -->
             <div class="table-container">
@@ -233,7 +227,6 @@
             </div>
         </div>
 
-        <!-- Botón Volver -->
         <div class="button-container">
             <button onclick="volver()">Volver</button>
         </div>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Estilo general */
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            flex: 1;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .footer .icon-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer .icon-container a {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer .icon-container a:hover {
+            color: #007bff;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Estilos para el cuadro de pagos */
+        .payment-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 45%;
+        }
+
+        .payment-box h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .payment-box .line {
+            border-top: 1px solid #007bff;
+            margin: 10px 0;
+        }
+
+        .payment-box p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        /* Barra de porcentaje */
+        .progress-container {
+            display: flex;
+            flex-direction: column;
+            width: 45%;
+        }
+
+        .progress-container .progress-bar {
+            background-color: #e9ecef;
+            border-radius: 5px;
+            height: 20px;
+        }
+
+        .progress-bar .progress {
+            height: 100%;
+            background-color: #007bff;
+            width: 60%; 
+            border-radius: 5px;
+        }
+
+        .progress-container p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+      .btn-custom {
+        background-color: #007bff;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        border: none;
+        width: 200px;
+        margin: 20px auto;
+        display: block;
+        text-align: center;
+    }
+    
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    .btn-custom:hover {
+        background-color: #0056b3;
+    }
+
+        .footer .social-icons i {
+            font-size: 40px;
+            margin-right: 20px;
+            color: white;
+        }
+
+        .footer .social-icons i:hover {
+            color: #007bff;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .payment-box, .progress-container {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .btn-container {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Footer superior -->
+    <div class="footer">
+        <div class="icon-container">
+            <a href="destinoViaje.html"><i class="fas fa-home"></i></a>
+            <a href="login.html"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="modificarPerfil.html"><i class="fas fa-user"></i></a>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <h1 style="text-align: center;">Pagos</h1>
+    <div class="container">
+        
+        <!-- Cuadro de pagos -->
+        <div class="payment-box">
+            <h3>Total a Pagar:</h3>
+            <p>$500,000 CLP</p>
+            <div class="line"></div>
+            <h3>Total Pagado:</h3>
+            <p>$300,000 CLP</p>
+            <div class="line"></div>
+            <h3>Saldo por Pagar:</h3>
+            <p>$200,000 CLP</p>
+        </div>
+
+        <!-- Barra de porcentaje y fecha -->
+        <div class="progress-container">
+            <!-- Barra de progreso -->
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <span>60% Pagado</span>
+
+            <!-- Fecha de plazo -->
+            <p><strong>Plazo para completar pago:</strong> 15 de diciembre de 2024</p>
+        </div>
+    </div>
+
+    <div class="btn-container">
+        <button class="btn-custom">Registro de Pagos</button>
+        <button class="btn-custom">Realizar Pago</button>
+    </div>
+
+    <!-- Footer inferior -->
+    <footer class="footer">
+        <div class="footer-left">
+            <p><strong>Contacto</strong></p>
+            <p>Teléfono: +56 9 1234 5678</p>
+            <p>Email: contacto@ontour.cl</p>
+            <p>Dirección: Huérfanos 11, Providencia</p>
+        </div>
+        <div class="footer-right">
+            <p>Redes Sociales</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Aquí va el código para hacer el request al backend y actualizar la vista con los datos 
+        // Ej:
+        fetch('/api/pagos')
+            .then(response => response.json())
+            .then(data => {
+                // Actualizar los valores con los datos obtenidos del API
+                document.querySelector('.payment-box p:nth-child(2)').textContent = `${data.totalPagar} CLP`;
+                document.querySelector('.payment-box p:nth-child(4)').textContent = `${data.totalPagado} CLP`;
+                document.querySelector('.payment-box p:nth-child(6)').textContent = `${data.saldoPagar} CLP`;
+                document.querySelector('.progress .progress').style.width = `${data.porcentajePagado}%`;
+                document.querySelector('p:nth-of-type(2)').textContent = `Plazo para completar pago: ${data.plazo}`;
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos:', error);
+            });
+    </script>
+</body>
+</html>

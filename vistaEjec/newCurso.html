@@ -37,42 +37,35 @@
             flex-direction: column; 
             align-items: flex-start; 
         }
+        .footer .icon-container {
+            display: flex;
+            gap: 20px;
+        }
+        .footer .icon-container a {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+        .footer .icon-container a:hover {
+            color: #007bff;
+        }
         .footer {
             background-color: #343a40;
             color: white;
             padding: 10px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
         }
-        .footer .card-header a {
-            color: white; 
-            font-size: 20px; 
+
+        .footer a {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
         }
-        .footer .footer-left,
-        .footer .footer-right {
-            flex: 1;
-            margin: 10px;
-        }
-        .footer .footer-left p,
-        .footer .footer-right p {
-            margin: 0;
-        }
-        .footer .footer-left strong {
-            display: block;
-            margin-bottom: 10px;
-        }
-        .footer .social-icons {
-            display: flex;
-            align-items: center;
-        }
-        .footer .social-icons i {
-            font-size: 40px; 
-            margin-right: 20px; 
-            color: white; 
-        }
-        .footer .social-icons i:hover {
-            color: #007bff; 
+
+        .footer a:hover {
+            color: #007bff;
         }
 
         .card-container {
@@ -105,10 +98,8 @@
 <body>
 
     <div class="footer">
-        <div class="card-header">
-            <a href="{{ url_for('logout') }}" class="text-white">
-                <i class="fas fa-sign-out-alt"></i> 
-            </a>
+        <div class="icon-container">
+            <a href="loginEje.html"><i class="fas fa-sign-out-alt"></i></a>
         </div>
     </div>
 
@@ -133,11 +124,11 @@
                 <br><br><br>            
                 <br><br><br>
 
-                <a href="{{ url_for('crear_curso') }}" class="btn btn-custom">Crear Curso</a>
+                <a href="crearCurso.html" class="btn btn-custom">Crear Curso</a>
                 <br>
-                <a href="{{ url_for('ver_apoderados') }}" class="btn btn-custom">Ver Apoderados</a>
+                <a href="listaCursos.html" class="btn btn-custom">Ver Cursos</a>
                 <br>
-                <a href="{{ url_for('crear_apoderado') }}" class="btn btn-custom">Crear Apoderado</a>
+                <a href="ingresoApoderado.html" class="btn btn-custom">Crear Apoderado</a>
             </div>
         </div>
     </div>

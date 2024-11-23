@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            flex: 1;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .footer .icon-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer .icon-container a {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer .icon-container a:hover {
+            color: #007bff;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-card .left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-card .left img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-card .right {
+            width: 60%;
+        }
+
+        .profile-card h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .profile-card .line {
+            border-top: 1px solid #007bff;
+            margin: 10px 0;
+        }
+
+        .profile-card p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .btn-change-photo {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            margin-top: 10px;
+        }
+
+        .btn-change-photo:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-modify-profile {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            margin-top: 20px;
+        }
+        .footer .social-icons i {
+            font-size: 40px;
+            margin-right: 20px;
+            color: white;
+        }
+
+        .footer .social-icons i:hover {
+            color: #007bff;
+        }
+
+        .btn-modify-profile:hover {
+            background-color: #0056b3;
+        }
+
+        .modify-profile-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .profile-card {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-card .right {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Footer superior -->
+    <div class="footer">
+        <div class="icon-container">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+            <a href="login.html"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="perfil.html"><i class="fas fa-user"></i></a>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <h2>Perfil</h2>
+        
+        <div class="profile-card">
+
+            <div class="left">
+                <img src="#" alt="Foto de Perfil"> 
+                <button class="btn-change-photo">Cambiar Foto</button>
+            </div>
+
+            <div class="right">
+                <p><strong>Nombre Apoderado:</strong> Juanin</p>
+                <p><strong>Rut Apoderado:</strong> 12.345.678-9</p>
+                <p><strong>Email Apoderado:</strong> apoderado@gmail.com</p>
+                <p><strong>Telefono Apoderado:</strong> +56 9 1234 5678</p>
+                <div class="line"></div>
+
+                <p><strong>Nombre Alumno:</strong> Walter</p>
+                <p><strong>Rut Alumno:</strong> 12.345.678-9</p>
+            </div>
+        </div>
+
+        <div class="modify-profile-container">
+            <button class="btn-modify-profile">Modificar Perfil</button>
+        </div>
+    </div>
+
+    <!-- Footer inferior -->
+    <footer class="footer">
+        <div class="footer-left">
+            <p><strong>Contacto</strong></p>
+            <p>Teléfono: +56 9 1234 5678</p>
+            <p>Email: contacto@ontour.cl</p>
+            <p>Dirección: Huérfanos 11, Providencia</p>
+        </div>
+        <div class="footer-right">
+            <p>Redes Sociales</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Aquí va la carga de datos del perfil desde una API, esto es un ej.
+        fetch('/api/perfil')
+            .then(response => response.json())
+            .then(data => {
+                // Cargar la información del perfil dinámicamente
+                document.querySelector('.profile-card img').src = data.fotoPerfil || 'profile-pic.jpg'; // Foto por defecto si no hay
+                document.querySelector('.profile-card h3').textContent = data.nombreApoderado;
+                document.querySelector('.profile-card p:nth-of-type(1)').textContent = `Rut Apoderado: ${data.rutApoderado}`;
+                document.querySelector('.profile-card p:nth-of-type(2)').textContent = `Email Apoderado: ${data.emailApoderado}`;
+                document.querySelector('.profile-card p:nth-of-type(3)').textContent = `Telefono Apoderado: ${data.telefonoApoderado}`;
+                document.querySelector('.profile-card p:nth-of-type(5)').textContent = `Nombre Alumno: ${data.nombreAlumno}`;
+                document.querySelector('.profile-card p:nth-of-type(6)').textContent = `Rut Alumno: ${data.rutAlumno}`;
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos del perfil:', error);
+            });
+    </script>
+
+</body>
+</html>

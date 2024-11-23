@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentos del Curso</title>
+    <title>Cursos Asociados</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Estructura general */
@@ -16,12 +16,15 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
+
         .container {
             flex: 1;
             max-width: 1000px;
             margin: auto;
             padding: 20px;
         }
+
+        /* Footer superior */
 
         .footer .icon-container {
             display: flex;
@@ -52,7 +55,26 @@
         .footer .social-icons i:hover {
             color: #007bff;
         }
+        /* Botones */
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            width: 200px;
+            margin: 20px auto;
+            display: block;
+            text-align: center;
+        }
 
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+
+        /* Tabla de cursos asociados */
         .data-container {
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -60,55 +82,46 @@
             background-color: white;
             margin-top: 20px;
         }
+
         .data-container table {
             width: 100%;
             border-collapse: collapse;
         }
+
         .data-container th,
         .data-container td {
             border: 1px solid #ccc;
             padding: 10px;
             text-align: left;
         }
+
         .data-container th {
             background-color: #007bff;
             color: white;
         }
+
         .data-container i {
             font-size: 16px;
             color: #007bff;
             cursor: pointer;
         }
+
         .data-container i:hover {
             color: #0056b3;
         }
 
+    
         .form-row .form-group {
-            flex: 1; 
+            flex: 1;
         }
-      .btn-custom {
-        background-color: #007bff;
-        color: white;
-        border-radius: 20px;
-        padding: 10px 20px;
-        font-size: 14px;
-        font-weight: bold;
-        border: none;
-        width: 200px;
-        margin: 20px auto;
-        display: block;
-        text-align: center;
-    }
-    .btn-custom:hover {
-        background-color: #0056b3;
-    }
+
         @media (max-width: 768px) {
             .form-row {
                 flex-direction: column;
                 gap: 10px;
             }
             .form-row > .form-group {
-                width: 100%; 
+                width: 100%;
             }
         }
     </style>
@@ -117,57 +130,53 @@
     <!-- Footer superior -->
     <div class="footer">
         <div class="icon-container">
-            <a href="newCurso.html"><i class="fas fa-home"></i></a>
-            <a href="loginEje.html"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="destinoViaje.html"><i class="fas fa-home"></i></a>
+            <a href="login.html"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="modificarPerfil.html"><i class="fas fa-user"></i></a>
         </div>
     </div>
 
-
     <!-- Contenido principal -->
     <div class="container">
-        <h1>Documentos del Curso</h1>
-        <h2>4to A Colegio Sendero del Saber</h2>
+        <h1>Cursos Asociados</h1>
 
+        <!-- Tabla de cursos asociados -->
         <div class="data-container">
-            <h3>Lista de Documentos</h3>
+            <h3>Lista de Cursos</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>Nro Doc.</th>
-                        <th>Nombre Doc.</th>
+                        <th>Curso</th>
+                        <th>Colegio</th>
+                        <th>Destino</th>
+                        <th>Rut Alumno</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody id="tabla-documentos">
+                <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Contrato</td>
+                        <td>4to A</td>
+                        <td>Santa María</td>
+                        <td>Bariloche</td>
+                        <td>12.345.678-9</td>
                         <td>
-                            <i class="fas fa-eye" onclick="verDocumento(1)"></i>
-                            <i class="fas fa-download" onclick="descargarDocumento(1)"></i>
+                            <i class="fas fa-eye"></i>
                         </td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>Beneficios</td>
+                        <td>4to B</td>
+                        <td>Alcantara</td>
+                        <td>Pucón</td>
+                        <td>23.456.789-0</td>
                         <td>
-                            <i class="fas fa-eye" onclick="verDocumento(2)"></i>
-                            <i class="fas fa-download" onclick="descargarDocumento(2)"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Seguro</td>
-                        <td>
-                            <i class="fas fa-eye" onclick="verDocumento(3)"></i>
-                            <i class="fas fa-download" onclick="descargarDocumento(3)"></i>
+                            <i class="fas fa-eye"></i>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <button class="btn-custom" onclick="volver()">Volver</button>
+        <button class="btn-custom" (click)="volver()">Volver</button>
     </div>
 
     <!-- Footer inferior -->
@@ -192,19 +201,14 @@
     </footer>
 
     <script>
-        // Función para ver un documento
-        function verDocumento(docId) {
-            alert("Ver documento " + docId);
-        }
-
-        // Función para descargar un documento
-        function descargarDocumento(docId) {
-            alert("Descargar documento " + docId);
+        // Función para ver detalles del curso
+        function verCurso(cursoId) {
+            alert("Ver detalles del curso " + cursoId);
         }
 
         // Función para volver a la página anterior
         function volver() {
-            window.location.href = 'listaCurso.html';  
+            window.location.href = 'destinoViaje.html';  
         }
     </script>
 </body>

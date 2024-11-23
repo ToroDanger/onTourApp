@@ -150,7 +150,6 @@
         .footer a:hover {
             color: #007bff;
         }
-           /* Tabla de datos */
            .data-container {
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -182,17 +181,16 @@
         }
         
 
-        /* Estilo responsivo */
         @media (max-width: 768px) {
             .form-row {
                 flex-direction: column;
-                gap: 10px; /* Menor espacio entre inputs en pantallas pequeñas */
+                gap: 10px;
             }
             .form-row > .form-group {
-                width: 100%; /* Los inputs toman todo el ancho disponible */
+                width: 100%; 
             }
             .btn-custom {
-                width: 90%; /* Botón más grande en pantallas pequeñas */
+                width: 90%; 
             }
         }
     </style>
@@ -201,11 +199,11 @@
     <!-- Footer superior -->
     <div class="footer">
         <div class="icon-container">
-            <a href="#"><i class="fas fa-sign-out-alt"></i></a>
-            <a href="#"><i class="fas fa-home"></i></a>
+            <a href="newCurso.html"><i class="fas fa-home"></i></a>
+            <a href="loginEje.html"><i class="fas fa-sign-out-alt"></i></a>
         </div>
     </div>
-    <!-- Header -->
+
     <div class="container">
         <h1>Ingreso de Apoderados</h1>
 
@@ -283,14 +281,13 @@
                     </tr>
                 </thead>
                 <tbody id="tabla-apoderados-body">
-                    <!-- Aquí se agregarán dinámicamente los datos -->
+
                 </tbody>
             </table>
         </div>
 
-        <!-- Botón Volver -->
         <div class="button-container">
-            <a href="{{ url_for('home') }}" class="btn btn-custom">Volver</a>
+            <a href="newCurso.html" class="btn btn-custom">Volver</a>
         </div>
     </div>
 
@@ -336,7 +333,7 @@
             if (response.ok) {
                 alert('Apoderado guardado con éxito');
 
-                // Lógica para agregar el apoderado a la tabla
+                // agregar el apoderado a la tabla
                 const apoderado = {
                     rut: formData.get('rutApoderado'),
                     nombre: formData.get('nombreApoderado'),
