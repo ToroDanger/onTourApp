@@ -41,7 +41,9 @@ async function loginUser() {
                   
                    
                 } else if (userRole === 'ejecutivo') {
-                    window.location.href = '../vistaEjec/homeEjec.html';
+                    const baseURL = '../vistaEjec/homeEjec.html';
+                    const URL = `${baseURL}?id=${userid}`;
+                    window.location.href = URL;
                 } else {
                     alert('Rol no reconocido. Contacte al administrador.');
                 }
