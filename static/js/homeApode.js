@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const alumno = data.alumno;
             console.log(localStorage.getItem('alumno'));
 
-            document.getElementById('perfil').
+            document.getElementById('perfil');
             document.getElementById('nombre-apoderado').textContent = `Apoderado: ${alumno.apoderado || 'No disponible'}`;
             document.getElementById('nombre-alumno').textContent = `Nombre Alumno: ${alumno.nom+' '+alumno.appat+' '+alumno.apmat || 'No disponible'}`;
             document.getElementById('nombre-curso').textContent = `Curso: ${alumno.curso || 'No disponible'}`;
@@ -48,4 +48,44 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById('nombre-alumno').textContent = 'Error al obtener datos del alumno';
         document.getElementById('nombre-curso').textContent = 'Error al obtener datos del curso';
     }
+    const logoutButton = document.getElementById('logoutButton');
+  
+    // Escucha el evento de clic del botón
+    logoutButton.addEventListener('click', () => {
+      // Obtén el token almacenado (por ejemplo, en localStorage)
+      const token = localStorage.getItem('token');
+      
+      if (!token) {
+        alert('No se encontró un token activo. Por favor, inicia sesión.');
+        return;
+      }
+  
+      // Realiza la solicitud al backend para cerrar sesión
+      fetch('http://localhost:5000/logout', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            alert('Sesión cerrada correctamente.');
+            // Limpia el token del almacenamiento local
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            localStorage.removeItem('alumno');
+            // Redirige al usuario al login o página inicial
+            window.location.href = '/login.html';
+          } else {
+            return response.json().then(data => {
+              throw new Error(data.message || 'Error al cerrar sesión.');
+            });
+          }
+        })
+        .catch(error => {
+          console.error('Error al cerrar sesión:', error.message);
+          alert('Ocurrió un error al intentar cerrar sesión.');
+        });
+    });
 });
+  
