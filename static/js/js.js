@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", async () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('idUser');
+    localStorage.removeItem('alumno');
+    localStorage.removeItem('idCurso');
+});
+
 async function loginUser() {
 
     const email = document.getElementById('email').value;
@@ -29,6 +37,7 @@ async function loginUser() {
                 const user = localStorage.getItem('user');
                 const userObject = JSON.parse(user);
                 const userid = userObject.id;
+                localStorage.setItem('idUser',userObject.id)
 
                 // Obtener el rol del usuario
                 const userRole = data.user.rol;

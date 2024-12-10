@@ -3,32 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/css.css">
     <title>Document</title>
-    <!-- Bootstrap CSS para un diseño responsivo y moderno -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="static/css/css.css">
 </head>
-</head>
-
-<body class="bg-light">
-    <header class="bg-primary text-white p-4">
-        <div class="container text-center">
-            <h1 class="font-weight-bold">Bienvenido a On Tour</h1>
-            <p>Explora nuestras ofertas de paquetes turísticos</p>
-        </div>
+<body>
+    <header class="p-1" style="background-color: #5AB2FF;">
+        <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="/vistaApode/homeApode.html"><img src="/static/img/boton-de-inicio.png" alt="" style="width: 33px;"></a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="/vistaApode/perfil.html"><img src="/static/img/usuario.png" alt="" style="width: 33px;"></a>
+                        </li>
+                        <!-- Botón para crear cuenta -->
+                        <li class="nav-item">
+                            <a id="logoutButton" href=""><img src="/static/img/cerrar-sesion (1).png" alt="" style="width: 33px;"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
-    <div>
-        <h1 style="justify-content: center;">Informacion gira de estudios</h1>
+    <!-- Contenido principal -->
+    <h1 style="text-align: center;">Pagos</h1>
+    <div class="container" style="margin-left: 30%;">
+        <!-- Cuadro de pagos -->
+        <div class="payment-box">
+            <h3>Total a Pagar:</h3>
+            <p id="total-pagar">$500,000 CLP</p>
+            <div class="line"></div>
+            <h3>Total Pagado:</h3>
+            <p id="total-pagado">$300,000 CLP</p>
+            <div class="line"></div>
+            <h3>Saldo por Pagar:</h3>
+            <p id="saldo-por-pagar">$200,000 CLP</p>
+        </div>
+
+        <!-- Barra de porcentaje y fecha -->
+        <div class="progress-container">
+            <!-- Barra de progreso -->
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <span>60% Pagado</span>
+
+            <!-- Fecha de plazo -->
+            <p><strong>Plazo para completar pago:</strong> 15 de diciembre de 2024</p>
+        </div>
+        <div class="btn-container" style="margin-left: 10%;">
+            <a href="infoPagosApode.html" class="btn btn-custom">Registro de Pagos</a>
+            <a href="reaPagoApode.html" class="btn btn-custom">Realizar Pago</a>
+        </div>
     </div>
 
-  
+    <div id="pagos-container"></div> <!-- Contenedor para mostrar los pagos -->
 
-    <footer class="bg-dark text-white text-center p-4 mt-4">
-        <p>&copy; 2024 On Tour - Todos los derechos reservados</p>
+    <footer class="footer">
+        <div class="footer-left">
+            <p><strong>Contacto</strong></p>
+            <p>Teléfono: +56 9 1234 5678</p>
+            <p>Email: contacto@ontour.cl</p>
+            <p>Dirección: Huérfanos 11, Providencia</p>
+        </div>
+        <div class="footer-right">
+            <p>Redes Sociales</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Bootstrap JS y dependencias -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Scripts de Bootstrap -->
+    <script src="/static/js/curApode.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 </body>
 </html>

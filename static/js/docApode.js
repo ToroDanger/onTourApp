@@ -1,42 +1,41 @@
 document.addEventListener("DOMContentLoaded", async () => {
-
-    if (!localStorage.getItem('alumno')) {
-        console.error("No se proporcionó el ID del apoderado en la URL.");
+    const apoderadoId = localStorage.getItem('idUser');
+    
+    if (!apoderadoId) {
+        console.error("No se proporcionó el id del apoderado.");
         return;
     }
 
     try {
-        const response = await fetch(`http://127.0.0.1:5000/pefilApode?id=${localStorage.getItem('alumno')}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
-
+        const response = await fetch(`http://127.0.0.1:5000/archivos?apoderado=${apoderadoId}`);
         const data = await response.json();
-        console.log(localStorage.getItem('alumno'))
 
-        if (data && data.apoderados && data.apoderados.length > 0) {
-            const apoderado = data.apoderados[0]; // Asumimos que hay al menos un apoderado en la respuesta
-            const nombreApoderado = document.getElementById("nombre-apoderado");
-            const nombreAlumno = document.getElementById("nombre-alumno");
-            const nombreCurso = document.getElementById("nombre-curso");
-            const correoElemento = document.getElementById("correo-elemento");
+        if (data.archivos) {
+            const archivosContainer = document.getElementById('documentos-tbody');
+            archivosContainer.innerHTML = "";  // Limpiar cualquier contenido previo
 
-            // Actualizar datos en HTML
-            nombreApoderado.textContent = `Nombre: ${apoderado.nom}`;
-            nombreAlumno.textContent = `Alumno: ${apoderado.nomAlum}`;
-            nombreCurso.textContent = `RUT del Alumno: ${apoderado.rutAlum}`;
-
-            // Opcional: Agregar correo al perfil
-            correoElemento.textContent = `Correo: ${apoderado.mail}`;
-            document.querySelector(".card-body").appendChild(correoElemento);
+            data.archivos.forEach(archivo => {
+                // Crear dinámicamente las filas de la tabla con los archivos
+                const row = document.createElement('tr');
+                const cell1 = document.createElement('td');
+                cell1.textContent = archivo.id;  // Nro de documento
+                const cell2 = document.createElement('td');
+                const link = document.createElement('a');
+                link.href = `http://127.0.0.1:5000/get_pdf/${archivo.nombre}`;
+                link.textContent = archivo.nombre;  // Nombre del documento
+                cell2.appendChild(link);
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                archivosContainer.appendChild(row);
+            });
         } else {
-            console.log("No se encontraron datos del apoderado.");
+            console.error("No se encontraron documentos para este apoderado.");
         }
+
     } catch (error) {
-        console.error("Error al obtener los datos:", error);
+        console.error("Error al obtener los documentos:", error);
     }
+
     const logoutButton = document.getElementById('logoutButton');
   
     // Escucha el evento de clic del botón

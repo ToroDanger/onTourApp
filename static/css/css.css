@@ -4,12 +4,12 @@ html{
 }
 
 body {
-    background-color: #faf9f8; 
-    color: #343a40; 
+    background-color: #f8f9fa;
+    color: #343a40;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-
+    margin: 0;
 }
 .container{
     text-align: center;
@@ -104,10 +104,14 @@ header {
 .btn-custom:hover {
     background-color: #B7E0FF; 
 }
-.button-container {
+.btn-container {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.btn-custom:hover {
+    background-color: #0056b3;
 }
 .footer {
     width: 100%;
@@ -148,3 +152,51 @@ header {
 .footer .social-icons i:hover {
     color: #007bff; 
 }
+.payment-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 45%;
+}
+.payment-box h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.payment-box .line {
+    border-top: 1px solid #007bff;
+    margin: 10px 0;
+}
+
+.payment-box p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Barra de porcentaje */
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.progress-container .progress-bar {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    height: 20px;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    background-color: #007bff;
+    width: 60%; 
+    border-radius: 5px;
+}
+
+.progress-container p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+

@@ -1,8 +1,9 @@
 
-
 document.addEventListener("DOMContentLoaded", async () => {
     const queryParams = new URLSearchParams(window.location.search);
     const alumnoId = queryParams.get('alumno'); // Cambié 'id' a 'alumno'
+    localStorage.setItem('alumno',alumnoId);
+    console.log(localStorage.getItem('alumno'));
 
     if (!alumnoId) {
         console.error("No se proporcionó el ID del alumno en la URL.");
@@ -17,14 +18,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
         const data = await response.json();
+        console.log(localStorage.getItem('alumno'))
 
         if (data && data.alumno) {
             // Procesa los datos del alumno y actualiza el HTML
             console.log(data.alumno);
+            
 
             // Suponiendo que el objeto 'alumno' tiene las propiedades 'apoderado', 'nom', 'nomCurso'
             const alumno = data.alumno;
             console.log(localStorage.getItem('alumno'));
+            console.log(alumno.idCurso)
+            localStorage.setItem('idCurso',alumno.idCurso)
+            console.log(localStorage.getItem('idCurso'))
 
             document.getElementById('perfil');
             document.getElementById('nombre-apoderado').textContent = `Apoderado: ${alumno.apoderado || 'No disponible'}`;
@@ -74,6 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             localStorage.removeItem('alumno');
+            localStorage.removeItem('idUser');
             // Redirige al usuario al login o página inicial
             window.location.href = '/login.html';
           } else {
