@@ -50,7 +50,7 @@ async function loginUser() {
                   
                    
                 } else if (userRole === 'ejecutivo') {
-                    const baseURL = '../vistaEjec/homeEjec.html';
+                    const baseURL = '../vistaEjec/newCurso.html';
                     const URL = `${baseURL}?id=${userid}`;
                     window.location.href = URL;
                 } else {

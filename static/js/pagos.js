@@ -1,64 +1,84 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const id = localStorage.getItem('user') // Obtén el parámetro 'id' de la URL
+    console.log(localStorage.getItem('idCurso'));
+    const cursoId = localStorage.getItem('idCurso');
+    const url = `http://127.0.0.1:5000/cuotas_curso/${cursoId}`;
 
-    if (!id) {
-        console.error("No se proporcionó el ID en la URL.");
-        return;
-    }
+
 
     try {
-        const response = await fetch(`http://127.0.0.1:5000/pagos?id=${id}`);
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Error al obtener los datos: ${response.statusText}`);
+        }
+        
         const data = await response.json();
 
-        if (data && data.pagos) {
-            const pagosContainer = document.getElementById('pagos-container');
-            if (!pagosContainer) {
-                console.error('Contenedor de pagos no encontrado');
-                return;
-            }
-
-            let totalPagar = 0;
-            let totalPagado = 0;
-
-            data.pagos.forEach(pago => {
-                const montoPago = pago.montoPago;
-                totalPagado += montoPago;
-
-                const pagoElement = document.createElement('div');
-                pagoElement.classList.add('payment-item');
-                pagoElement.innerHTML = `
-                    <p>Pago ID: ${pago.id}</p>
-                    <p>Monto Pagado: $${pago.montoPago}</p>
-                    <p>Fecha de Vencimiento: ${pago.fecVen}</p>
-                `;
-                pagosContainer.appendChild(pagoElement);
-            });
-
-            totalPagar = 500000; // Ejemplo de valor para totalPagar
-            const saldoPorPagar = totalPagar - totalPagado;
-
-            // Verificar si los elementos existen
-            const totalPagarElement = document.getElementById('total-pagar');
-            const totalPagadoElement = document.getElementById('total-pagado');
-            const saldoPorPagarElement = document.getElementById('saldo-por-pagar');
-
-            if (totalPagarElement && totalPagadoElement && saldoPorPagarElement) {
-                totalPagarElement.textContent = `$${totalPagar.toLocaleString()} CLP`;
-                totalPagadoElement.textContent = `$${totalPagado.toLocaleString()} CLP`;
-                saldoPorPagarElement.textContent = `$${saldoPorPagar.toLocaleString()} CLP`;
-
-                // Barra de progreso
-                const porcentajePagado = (totalPagado / totalPagar) * 100;
-                document.querySelector('.progress-bar').style.width = `${porcentajePagado}%`;
-                document.querySelector('.progress-bar span').textContent = `${Math.round(porcentajePagado)}% Pagado`;
-            } else {
-                console.error('Algunos elementos no se encontraron en el DOM.');
-            }
-
-        } else {
-            console.error("No se encontraron pagos.");
+        // Verifica si hay cuotas disponibles
+        if (data.estado === "sin datos") {
+            alert("No se encontraron cuotas para este curso.");
+            return;
         }
+
+        // Mostrar información general
+        const totalValor = document.getElementById("total-valor");
+        const totalPagado = document.getElementById("total-pagado");
+        const totalPendiente = document.getElementById("total-pendiente");
+        const porcentajeAvance = document.getElementById("porcentaje-avance");
+
+        totalValor.innerText = `$${data.total_valor}`;
+        totalPagado.innerText = `$${data.total_pagado}`;
+        totalPendiente.innerText = `$${data.total_pendiente}`;
+        porcentajeAvance.innerText = `${data.porcentaje_avance}%`;
+        
+
     } catch (error) {
-        console.error("Error al obtener los pagos:", error);
+        console.error("Error al cargar los datos:", error);
+        alert("Ocurrió un error al cargar la información de pagos.");
     }
+    const logoutButton = document.getElementById('logoutButton');
+  
+    // Escucha el evento de clic del botón
+    logoutButton.addEventListener('click', () => {
+      // Obtén el token almacenado (por ejemplo, en localStorage)
+      const token = localStorage.getItem('token');
+      
+      if (!token) {
+        alert('No se encontró un token activo. Por favor, inicia sesión.');
+        return;
+      }
+  
+      // Realiza la solicitud al backend para cerrar sesión
+      fetch('http://localhost:5000/logout', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            alert('Sesión cerrada correctamente.');
+            // Limpia el token del almacenamiento local
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            localStorage.removeItem('alumno');
+            localStorage.removeItem('idUser');
+            // Redirige al usuario al login o página inicial
+            window.location.href = '/login.html';
+          } else {
+            return response.json().then(data => {
+              throw new Error(data.message || 'Error al cerrar sesión.');
+            });
+          }
+        })
+        .catch(error => {
+          console.error('Error al cerrar sesión:', error.message);
+          alert('Ocurrió un error al intentar cerrar sesión.');
+        });
+    });
 });
+
+// Función auxiliar para obtener el curso ID desde la URL
+function getCursoIdFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("curso_id");
+}

@@ -18,11 +18,10 @@
         }
 
         .container {
-            flex: 1;
             max-width: 800px;
             margin: auto;
             padding: 20px;
-            margin-top: 10%;
+            margin-top: 5%;
         }
 
         .footer .icon-container {
@@ -167,17 +166,33 @@
     </div>
     
 
-    <!-- Contenido principal -->
     <div class="container">
-        
         <h2>Realizar Pago</h2>
-
+        <div class="card">
+            <div class="card-header" style="text-align: center;">Cuotas Pendientes</div><br>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Fecha de Pago</th>
+                            <th>Monto</th>
+                            <th>Seleccionar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pendientes-body"></tbody>
+                </table>
+            </div>
+        </div>
+    
+        <!-- Inputs de datos de la tarjeta -->
         <input class="inputPago" id="nro-tarjeta" type="number" placeholder="Ingrese nro Tarjeta"><br>
-        <input class="inputPago" id="fecha-vencimiento" type="number" placeholder="Ingrese Fecha"><br>
-        <input class="inputPago" id="cvv-tarjeta" type="number" placeholder="Ingrese cvv">
-
+        <input class="inputPago" id="fecha-vencimiento" type="text" placeholder="Ingrese Fecha"><br>
+        <input class="inputPago" id="cvv-tarjeta" type="number" placeholder="Ingrese CVV"><br>
+    
+        <!-- Botón para pagar -->
         <button class="btn-pay">Pagar</button>
     </div>
+    
 
     <!-- Footer inferior -->
     <footer class="footer">
@@ -200,5 +215,9 @@
         </div>
     </footer>
 
+    <script src="/static/js/reaPagoApode.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </body>
 </html>
