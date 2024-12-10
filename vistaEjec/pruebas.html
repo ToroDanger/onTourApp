@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos del Curso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pagos del Curso</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre Alumno</th>
+                    <th>Cuota</th>
+                    <th>Valor</th>
+                    <th>Pagado</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-pagos">
+                <!-- Los datos se llenarán aquí dinámicamente -->
+            </tbody>
+        </table>
+        <button onclick="volver()">Volver</button>
+    </div>
+
+    <script>
+        // ID del curso (cambiarlo dinámicamente si es necesario)
+        const cursoId = 22;
+
+        // URL de la API
+        const apiUrl = `http://127.0.0.1:5000/pagos_curso/${cursoId}`;
+
+        // Obtener datos desde la API
+        async function obtenerPagos() {
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                // Llenar la tabla con los datos
+                llenarTabla(data.pagos);
+            } catch (error) {
+                console.error('Error al obtener los pagos:', error);
+            }
+        }
+
+        // Función para llenar la tabla
+        function llenarTabla(pago) {
+            const tablaPagos = document.getElementById('tabla-pago');
+            tablaPagos.innerHTML = ''; // Limpiar la tabla
+
+            pagos.forEach(pago => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${pago.nombreAlumno}</td>
+                    <td>${pago.cuota}</td>
+                    <td>${pago.valor}</td>
+                    <td>${pago.pagado ? 'Sí' : 'No'}</td>
+                `;
+                tablaPagos.appendChild(row);
+            });
+        }
+
+        // Función para volver a la página anterior
+        function volver() {
+            window.history.back();
+        }
+
+        // Llamar a la función para obtener los pagos al cargar la página
+        obtenerPagos();
+    </script>
+</body>
+</html>

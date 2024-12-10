@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso de Alumnos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Estructura general */
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            flex: 1;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .footer .icon-container {
+            display: flex;
+            gap: 20px;
+        }
+        .footer .icon-container a {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+        .footer .icon-container a:hover {
+            color: #007bff;
+        }
+    
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer .social-icons i {
+            font-size: 40px;
+            margin-right: 20px;
+            color: white;
+        }
+        .footer .social-icons i:hover {
+            color: #007bff;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;  
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 10px; 
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            margin-bottom: 15px; 
+        }
+    
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            width: 200px;
+            margin: 20px auto;
+            display: block;
+            text-align: center;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+    
+        .data-container {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: white;
+            margin-top: 20px;
+        }
+        .data-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-container th,
+        .data-container td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .data-container th {
+            background-color: #007bff;
+            color: white;
+        }
+        .data-container i {
+            font-size: 16px;
+            color: #007bff;
+            cursor: pointer;
+        }
+        .data-container i:hover {
+            color: #0056b3;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+    
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 10px; 
+            }
+            .form-row > .form-group {
+                width: 100%; 
+            }
+            .btn-custom {
+                width: 90%; 
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Footer superior -->
+    <div class="footer">
+        <div class="icon-container">
+            <a href="newCurso.html"><i class="fas fa-home"></i></a>
+            <a href="loginEje.html"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+    </div>
+
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <h1>Ingreso de Alumnos</h1>
+
+        <!-- Formulario -->
+        <div class="form-row">
+            <div class="form-group" style="flex: 1;">
+                <label for="rut-alumno">Rut Alumno</label>
+                <input type="text" id="rut-alumno" placeholder="Ingrese rut del alumno">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" placeholder="Ingrese nombre del alumno">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group" style="flex: 1;">
+                <label for="apellido-paterno">Apellido Paterno</label>
+                <input type="text" id="apellido-paterno" placeholder="Ingrese apellido paterno">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="apellido-materno">Apellido Materno</label>
+                <input type="text" id="apellido-materno" placeholder="Ingrese apellido materno">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="rut-apoderado">Rut Apoderado</label>
+            <input type="text" id="rut-apoderado" placeholder="Ingrese rut del apoderado">
+        </div>
+
+        <button class="btn-custom" onclick="guardarAlumno()">Guardar alumno</button>
+
+        <!-- Lista de alumnos -->
+        <div class="data-container">
+            <table id="tabla-alumnos">
+                <thead>
+                    <tr>
+                        <th>Rut Alumno</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Rut Apoderado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <button class="btn-custom" onclick="volver()">Volver</button>
+    </div>
+
+    <!-- Footer inferior -->
+    <footer class="footer">
+        <div class="footer-left">
+            <p><strong>Contacto</strong></p>
+            <p>Teléfono: +56 9 1234 5678</p>
+            <p>Email: contacto@ontour.cl</p>
+            <p>Dirección: Huérfanos 11, Providencia</p>
+        </div>
+        <div class="footer-right">
+            <p>Redes Sociales</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script>
+        // Función para hacer la solicitud API y guardar el alumno
+        async function guardarAlumno() {
+            const rutAlumno = document.getElementById('rut-alumno').value;
+            const nombre = document.getElementById('nombre').value;
+            const apellidoPaterno = document.getElementById('apellido-paterno').value;
+            const apellidoMaterno = document.getElementById('apellido-materno').value;
+            const rutApoderado = document.getElementById('rut-apoderado').value;
+
+            const alumnoData = {
+                rutAlumno,
+                nombre,
+                apellidoPaterno,
+                apellidoMaterno,
+                rutApoderado
+            };
+
+            try {
+                const response = await fetch('https://api.tuservidor.com/alumnos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(alumnoData)
+                });
+
+                if (response.ok) {
+                    alert('Alumno guardado exitosamente');
+                    agregarFilaTabla(alumnoData);
+                } else {
+                    alert('Error al guardar el alumno');
+                }
+            } catch (error) {
+                console.error('Error en la solicitud API:', error);
+                alert('Error en la solicitud');
+            }
+        }
+
+        // Función para agregar una fila a la tabla de alumnos
+        function agregarFilaTabla(alumno) {
+            const tabla = document.getElementById('tabla-alumnos').getElementsByTagName('tbody')[0];
+            const nuevaFila = tabla.insertRow();
+
+            nuevaFila.innerHTML = `
+                <td>${alumno.rutAlumno}</td>
+                <td>${alumno.nombre}</td>
+                <td>${alumno.apellidoPaterno}</td>
+                <td>${alumno.apellidoMaterno}</td>
+                <td>${alumno.rutApoderado}</td>
+                <td><i class="fas fa-edit" onclick="editarAlumno(this)"></i></td>
+            `;
+        }
+
+        // Función para editar la información de un alumno
+        function editarAlumno(icon) {
+            const fila = icon.parentElement.parentElement;
+            const datos = fila.getElementsByTagName('td');
+
+            document.getElementById('rut-alumno').value = datos[0].innerText;
+            document.getElementById('nombre').value = datos[1].innerText;
+            document.getElementById('apellido-paterno').value = datos[2].innerText;
+            document.getElementById('apellido-materno').value = datos[3].innerText;
+            document.getElementById('rut-apoderado').value = datos[4].innerText;
+        }
+
+        // Función para navegar al inicio
+        function volver() {
+            window.location.href = 'newCurso.html';  
+        }
+    </script>
+</body>
+</html>

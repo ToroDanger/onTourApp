@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Curso</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+         #excelFile {
+            display: none; /* Oculta el input */
+        }
+        #contratoFile{
+            display: none;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            margin-top: 30px;
+            flex: 1;
+            max-width: 1000px;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            margin-bottom: 10px;
+            width: 250px;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer .social-icons i {
+            font-size: 40px;
+            margin-right: 20px;
+            color: white;
+        }
+        .footer .social-icons i:hover {
+            color: #007bff;
+        }
+        .card-container {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            color: #343a40; 
+            background-color: #fff;  
+            line-height: 1.5; 
+            height: auto;  
+            display: inline-block;
+        }
+        
+        .form-group select option {
+            color: #343a40; 
+            background-color: #fff;  
+            padding: 10px;  
+            font-size: 14px;
+        }
+        
+        .form-group label {
+            margin-right: 15px; 
+        }
+        .form-group .invalid-feedback {
+            display: none;
+            color: red;
+            font-size: 12px;
+        }
+        .form-group input:invalid ~ .invalid-feedback,
+        .form-group select:invalid ~ .invalid-feedback {
+            display: block;
+        }
+        .footer .card-header {
+            display: flex; 
+            justify-content: flex-end; 
+            align-items: center; 
+            padding: 10px;
+        }
+
+        .footer .icon-container {
+            display: flex;
+            gap: 20px;
+        }
+        .footer .icon-container a {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+        .footer .icon-container a:hover {
+            color: #007bff;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer a {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #007bff;
+        }        
+        
+
+    </style>
+</head>
+<body>
+    <!-- Footer superior -->
+    <div class="footer">
+        <div class="icon-container">
+            <a href="newCurso.html"><i class="fas fa-home"></i></a>
+            <a href="loginEje.html"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+    </div>
+    
+<div class="container">
+    <div class="title-container">
+        <h1 class="display-4 font-weight-bold">Crear Curso</h1>
+    </div>
+    <div class="main-container">
+        <div class="card-container">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ url_for('guardar_curso') }}" method="POST" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombreCurso">Nombre del Curso:</label>
+                                <input type="text" id="nombreCurso" name="nombreCurso" class="form-control" required minlength="3">
+                                <div class="invalid-feedback">Por favor, ingrese al menos 3 caracteres.</div>
+                            </div>
+                            <div class="form-group"> 
+                                <label for="fechaViaje">Fecha del viaje</label>
+                                <input type="date" id="fechaViaje" name="fechaViaje" class="form-control" required min="1">
+                                <div class="invalid-feedback">Por favor, ingrese la fecha yyyy-mm-dd</div>
+                            </div> 
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nombreColegio">Nombre del Colegio:</label>
+                            <input type="text" id="nombreColegio" name="nombreColegio" class="form-control" required>
+                            <div class="invalid-feedback">Este campo es obligatorio.</div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="paqueteTuristico">Paquete Turístico:</label>
+                                <select id="paqueteTuristico" name="paqueteTuristico" class="form-control" required>
+                                    <option value="">Seleccione una opción</option>
+                                    <option type="" value="paquete1">1</option>
+                                    <option value="paquete2">2</option>
+                                    <option value="paquete3">3</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor, seleccione una opción válida.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="seguro">Seguro:</label>
+                                <select id="seguro" name="seguro" class="form-control" required>
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="seguro1">1</option>
+                                    <option value="seguro2">2</option>
+                                    <option value="seguro3">3</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor, seleccione una opción válida.</div>
+                            </div>
+                        </div>
+
+                        <div class="button-container">
+                            <!-- <a href="ingresoAlumnos.html" class="btn btn-custom">Agregar Alumnos</a> -->
+                            
+                            <label for="excelFile" class="btn btn-custom">Subir excel</label>
+                            <input type="file" id="excelFile" name="excelFile" accept=".xlsx, .xls" required>
+                            
+                            <label for="contratoFile" class="btn btn-custom">Subir contrato</label>
+                            <input type="file" id="contratoFile" name="contratoFile" accept=".pdf, .docx, .doc" required>
+
+                            <button id="guardarCursoBtn" class="btn btn-custom">Guardar Curso</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="footer-left">
+        <p><strong>Contacto</strong></p>
+        <p>Teléfono: +56 9 1234 5678</p>
+        <p>Email: contacto@ontour.cl</p>
+        <p>Dirección: Huérfanos 11, Providencia</p>
+    </div>
+    <div class="footer-right">
+        <p>Redes Sociales</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<script src="scripts.js"></script>
+<script src="../static/js/setCurso.js"></script>
+</body>
+</html>
