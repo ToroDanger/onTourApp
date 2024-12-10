@@ -37,7 +37,7 @@ async function cargarCursos() {
 // Función para mostrar los documentos relacionados con un curso
 async function verDocumentos(cursoId) {
     try {
-        const response = await fetch('http://127.0.0.1:5000/archivos'); // Endpoint para obtener archivos
+        const response = await fetch('http://127.0.0.1:5000/archivo'); // Endpoint para obtener archivos
         const data = await response.json();
 
         if (response.ok && data.archivos) {
