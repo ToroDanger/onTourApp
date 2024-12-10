@@ -16,16 +16,43 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         const pendientesBody = document.getElementById("pendientes-body");
+
+        // Función para actualizar la suma de montos y mostrar IDs seleccionados
+        function actualizarSuma() {
+            let sumaMontos = 0;
+            let idsSeleccionados = [];
+            
+            const checkboxesSeleccionados = document.querySelectorAll(".cuota-checkbox:checked");
+            checkboxesSeleccionados.forEach(checkbox => {
+                const monto = parseFloat(checkbox.dataset.valor);
+                sumaMontos += monto;
+                idsSeleccionados.push(checkbox.dataset.id);
+            });
+
+            console.log("Suma de montos:", sumaMontos);
+            console.log("IDs seleccionados:", idsSeleccionados);
+        }
+
         data.detalle_pendientes.forEach(cuota => {
             const row = document.createElement("tr");
             row.innerHTML = `
                 <td>${cuota.fecha_cuota}</td>
                 <td>$${cuota.valor}</td>
                 <td>
-                    <input type="checkbox" class="cuota-checkbox" data-id="${cuota.cuota_id}" />
+                    <input 
+                        type="checkbox" 
+                        class="cuota-checkbox" 
+                        data-id="${cuota.cuota_id}" 
+                        data-valor="${cuota.valor}" 
+                    />
                 </td>
             `;
             pendientesBody.appendChild(row);
+        });
+
+        // Añadir eventos a los checkboxes
+        document.querySelectorAll(".cuota-checkbox").forEach(checkbox => {
+            checkbox.addEventListener("change", actualizarSuma);
         });
 
         // Escuchar el botón "Pagar"
@@ -36,6 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
+
 async function pagarCuota() {
     const nroTarjeta = document.getElementById("nro-tarjeta").value;
     const fecVen = document.getElementById("fecha-vencimiento").value;
@@ -43,7 +71,7 @@ async function pagarCuota() {
 
     // Selección de cuotas
     const selectedRows = Array.from(document.querySelectorAll("#pendientes-body input[type='checkbox']:checked"));
-    const cuotas = selectedRows.map(row => row.dataset.cuotaId);
+    const cuotas = selectedRows.map(row => row.dataset.id);
 
     // Validación de campos
     if (!nroTarjeta || !fecVen || !cvv || cuotas.length === 0) {
