@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const cursoId = localStorage.getItem('idCurso');
-    const url = `http://127.0.0.1:5000/cuotas_curso/${cursoId}`;
+    const cursoId = localStorage.getItem('alumnooo');
+    const url = `http://127.0.0.1:5000/cuotas_alum/${cursoId}`;
 
     try {
         const response = await fetch(url);
@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const pendientesBody = document.getElementById("pendientes-body");
 
-        // Función para actualizar la suma de montos y mostrar IDs seleccionados
         function actualizarSuma() {
             let sumaMontos = 0;
             let idsSeleccionados = [];
@@ -50,16 +49,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             pendientesBody.appendChild(row);
         });
 
-        // Añadir eventos a los checkboxes
         document.querySelectorAll(".cuota-checkbox").forEach(checkbox => {
             checkbox.addEventListener("change", actualizarSuma);
         });
 
-        // Escuchar el botón "Pagar"
         document.querySelector(".btn-pay").addEventListener("click", pagarCuota);
     } catch (error) {
         console.error("Error al cargar los datos:", error);
-        alert("Ocurrió un error al cargar la información de pagos.");
+        alert("Ocurrió un error al cargar la información de pagossssßs.");
     }
 });
 
@@ -69,18 +66,16 @@ async function pagarCuota() {
     const fecVen = document.getElementById("fecha-vencimiento").value;
     const cvv = document.getElementById("cvv-tarjeta").value;
 
-    // Selección de cuotas
     const selectedRows = Array.from(document.querySelectorAll("#pendientes-body input[type='checkbox']:checked"));
     const cuotas = selectedRows.map(row => row.dataset.id);
 
-    // Validación de campos
     if (!nroTarjeta || !fecVen || !cvv || cuotas.length === 0) {
         alert("Por favor, complete todos los datos y seleccione al menos una cuota.");
         return;
     }
 
     try {
-        const response = await fetch('http://127.0.0.1:5000/pagos', {
+        const response = await fetch('http://127.0.0.1:5000/pago', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -100,7 +95,7 @@ async function pagarCuota() {
 
         const data = await response.json();
         alert(data.Mensaje || "Pago realizado con éxito");
-        location.reload(); // Recargar la página para mostrar los cambios
+        location.reload(); 
     } catch (error) {
         console.error("Error al realizar el pago:", error);
         alert("Ocurrió un error al procesar el pago. Intente nuevamente.");

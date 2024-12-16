@@ -1,10 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    console.log(localStorage.getItem('idCurso'));
-    const cursoId = localStorage.getItem('idCurso');
-    const url = `http://127.0.0.1:5000/cuotas_curso/${cursoId}`;
-
-
-
+    const cursoId = localStorage.getItem('alumnooo');
+    const url = `http://127.0.0.1:5000/cuotas_alum/${cursoId}`;
+ 
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -20,15 +17,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         // Mostrar información general
-        const totalValor = document.getElementById("total-valor");
-        const totalPagado = document.getElementById("total-pagado");
-        const totalPendiente = document.getElementById("total-pendiente");
-        const porcentajeAvance = document.getElementById("porcentaje-avance");
+        // const totalValor = document.getElementById("total-valor");
+        // const totalPagado = document.getElementById("total-pagado");
+        // const totalPendiente = document.getElementById("total-pendiente");
+        // const porcentajeAvance = document.getElementById("porcentaje-avance");
 
-        totalValor.innerText = `$${data.total_valor}`;
-        totalPagado.innerText = `$${data.total_pagado}`;
-        totalPendiente.innerText = `$${data.total_pendiente}`;
-        porcentajeAvance.innerText = `${data.porcentaje_avance}%`;
+        // totalValor.innerText = `$${data.total_valor}`;
+        // totalPagado.innerText = `$${data.total_pagado}`;
+        // totalPendiente.innerText = `$${data.total_pendiente}`;
+        // porcentajeAvance.innerText = `${data.porcentaje_avance}%`;
 
         // Mostrar cuotas pagadas
         const pagadasBody = document.getElementById("pagadas-body");
@@ -47,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const row = document.createElement("tr");
             row.innerHTML = `
                 <td>${cuota.fecha_cuota}</td>
-                <td>$${cuota.valor}</td>
+                <td>$${cuota.valorCuotaFormateado}</td>
             `;
             pendientesBody.appendChild(row);
         });

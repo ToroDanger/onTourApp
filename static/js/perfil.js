@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
-    if (!localStorage.getItem('alumno')) {
+    if (!localStorage.getItem('alumnooo')) {
         console.error("No se proporcionó el ID del apoderado en la URL.");
         return;
     }
 
     try {
-        const response = await fetch(`http://127.0.0.1:5000/pefilApode?id=${localStorage.getItem('alumno')}`, {
+        const response = await fetch(`http://127.0.0.1:5000/pefilApode?id=${localStorage.getItem('alumnooo')}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,42 +39,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     const logoutButton = document.getElementById('logoutButton');
   
-    // Escucha el evento de clic del botón
-    logoutButton.addEventListener('click', () => {
-      // Obtén el token almacenado (por ejemplo, en localStorage)
-      const token = localStorage.getItem('token');
-      
-      if (!token) {
-        alert('No se encontró un token activo. Por favor, inicia sesión.');
-        return;
-      }
-  
-      // Realiza la solicitud al backend para cerrar sesión
-      fetch('http://localhost:5000/logout', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
-        .then(response => {
-          if (response.ok) {
-            alert('Sesión cerrada correctamente.');
-            // Limpia el token del almacenamiento local
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            localStorage.removeItem('alumno');
-            localStorage.removeItem('idUser');
-            // Redirige al usuario al login o página inicial
-            window.location.href = '/login.html';
-          } else {
-            return response.json().then(data => {
-              throw new Error(data.message || 'Error al cerrar sesión.');
-            });
-          }
-        })
-        .catch(error => {
-          console.error('Error al cerrar sesión:', error.message);
-          alert('Ocurrió un error al intentar cerrar sesión.');
-        });
-    });
 });

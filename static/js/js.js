@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    localStorage.removeItem('idUser');
-    localStorage.removeItem('alumno');
-    localStorage.removeItem('idCurso');
+    localStorage.clear();
 });
 
 async function loginUser() {

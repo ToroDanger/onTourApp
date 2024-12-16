@@ -180,6 +180,7 @@ header {
     display: flex;
     flex-direction: column;
     width: 45%;
+  
 }
 
 .progress-container .progress-bar {
